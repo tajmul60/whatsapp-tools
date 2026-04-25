@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free WhatsApp Link Generator & Tools</title>
+
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #f4f4f4;
+}
+
+header {
+  background: #25D366;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+nav a {
+  margin: 10px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.container {
+  padding: 20px;
+  text-align: center;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  margin: 15px auto;
+  border-radius: 10px;
+  max-width: 400px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+button {
+  padding: 10px;
+  width: 95%;
+  border: none;
+  border-radius: 8px;
+  background: #25D366;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 10px;
+  word-break: break-all;
+}
+
+.copy-btn {
+  background: black;
+  margin-top: 5px;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #222;
+  color: white;
+  margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>Free Online Tools</h2>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#qr">QR Tool</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="container">
+
+<!-- WhatsApp Tool -->
+<div class="card" id="home">
+  <h3>WhatsApp Link Generator</h3>
+
+  <input id="number" placeholder="923001234567">
+  <input id="message" placeholder="Your message">
+
+  <button onclick="generate()">Generate Link</button>
+
+  <div class="result" id="result"></div>
+  <button class="copy-btn" onclick="copyLink()">Copy Link</button>
+</div>
+
+<!-- QR Tool -->
+<div class="card" id="qr">
+  <h3>QR Code Generator</h3>
+
+  <input id="qrtext" placeholder="Enter text or link">
+  <button onclick="makeQR()">Generate QR</button>
+
+  <canvas id="qrcanvas"></canvas>
+</div>
+
+<!-- About -->
+<div class="card" id="about">
+  <h3>About</h3>
+  <p>This website provides free tools like WhatsApp link generator and QR code generator.</p>
+</div>
+
+<!-- Contact -->
+<div class="card" id="contact">
+  <h3>Contact</h3>
+  <p>Email: your@email.com</p>
+</div>
+
+<!-- AdSense Placeholder -->
+<div class="card">
+  <h4>Advertisement</h4>
+  <!-- Paste AdSense code here -->
+</div>
+
+</div>
+
+<footer>
+  <p>© 2026 Free Tools Website</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.1/qrcode.min.js"></script>
+
+<script>
+let generatedLink = "";
+
+function generate() {
+  let number = document.getElementById("number").value;
+  let message = encodeURIComponent(document.getElementById("message").value);
+
+  generatedLink = `https://wa.me/${number}?text=${message}`;
+
+  document.getElementById("result").innerHTML =
+    `<a href="${generatedLink}" target="_blank">${generatedLink}</a>`;
+}
+
+function copyLink() {
+  if (!generatedLink) return alert("Generate link first!");
+  navigator.clipboard.writeText(generatedLink);
+  alert("Copied!");
+}
+
+function makeQR(){
+  let text = document.getElementById("qrtext").value;
+  QRCode.toCanvas(document.getElementById("qrcanvas"), text);
+}
+</script>
+
+</body>
+  </html>
